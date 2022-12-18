@@ -1,0 +1,17 @@
+<mat-toolbar color="warn" class="flex-container">
+    <button mat-fab routerLink="/users/1">
+        <mat-icon>group</mat-icon>
+    </button>
+    <button mat-fab routerLink="/drivers">
+        <mat-icon>badge</mat-icon>
+    </button>
+    <button mat-fab routerLink="/orders/all">
+        <mat-icon>list</mat-icon>
+    </button>
+    <button mat-fab routerLink="/admin-notifications">
+        <mat-icon>notifications</mat-icon>
+    </button>
+    <button mat-fab (click)="logout()">
+        <mat-icon>logout</mat-icon>
+    </button>   
+</mat-toolbar>

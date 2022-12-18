@@ -1,0 +1,40 @@
+<app-navigation></app-navigation>
+<button mat-raised-button color="primary" (click)="createOrder()">Create new order</button>
+<div *ngIf="isOrdersLoaded" class="index-page">
+    <mat-card class="order-card" *ngFor="let order of orders; let i = index"
+              (click)="getOrderItems(order)">
+        <mat-card-header>
+            <mat-card-title>
+                {{order.status}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{order.startPoint + ' --> ' + order.endPoint}}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <div class="driver-info">
+                <div *ngIf="!(order.driverLastName && order.driverLastName); else eldr">
+                    <p>Driver lastname: ---</p>
+                    <p>Driver firstname: ---</p>
+                    <p>Driver rating: ---</p>
+                </div>
+                <ng-template #eldr>
+                    <p>Driver lastname: {{order.driverLastName}}</p>
+                    <p>Driver firstname: {{order.driverFirstName}}</p>
+                    <p>Driver rating: {{order.driverRating}}*</p>
+                </ng-template>
+                <p>Start date: {{order.startDate}}</p>
+                <div *ngIf="order.endDate; else eldate">
+                    <p>End date: {{order.endDate}}</p>
+                </div>
+                <ng-template #eldate>
+                    <p>End date: ---</p>
+                </ng-template>
+            </div>
+            <div class="price">
+                <b>Price: {{order.price}} BYN</b>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

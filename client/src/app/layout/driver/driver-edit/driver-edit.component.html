@@ -1,0 +1,28 @@
+<div>
+    <h2>Edit user details</h2>
+    <form [formGroup]="driverEditForm">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Last name</mat-label>
+            <input matInput formControlName="lastName">
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Telephone</mat-label>
+            <input matInput formControlName="telephone">
+        </mat-form-field>
+
+        <div>
+            <button (click)="closeDialog()" class="w-50"
+                    mat-button mat-dialog-close disableRipple>
+                Cancel
+            </button>
+            <button color="primary" class="w-50" [disabled]="driverEditForm.invalid"
+                    (click)="submit()" mat-button disableRipple>
+                Update
+            </button>
+        </div>
+    </form>
+</div>

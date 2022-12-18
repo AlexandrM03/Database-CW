@@ -1,0 +1,23 @@
+<app-admin-navigation></app-admin-navigation>
+<div *ngIf="isRatingLoaded" class="table-con">
+    <table mat-table [dataSource]="ratings" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="rating">
+            <th mat-header-cell *matHeaderCellDef>Rating</th>
+            <td mat-cell *matCellDef="let rating">{{rating.rating}}</td>
+        </ng-container>
+        <ng-container matColumnDef="message">
+            <th mat-header-cell *matHeaderCellDef>Message</th>
+            <td mat-cell *matCellDef="let rating">{{rating.message}}</td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let rating">
+                <button mat-raised-button
+                        (click)="deleteDriverRating(rating.id)">Remove</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['rating', 'message', 'action']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['rating', 'message', 'action'];"></tr>
+    </table>
+</div>

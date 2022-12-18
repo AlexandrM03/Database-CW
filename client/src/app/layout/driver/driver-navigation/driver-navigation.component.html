@@ -1,0 +1,14 @@
+<mat-toolbar color="warn" class="flex-container">
+    <button mat-fab routerLink="/accepted-orders">
+        <mat-icon>list</mat-icon>
+    </button>
+    <button mat-fab routerLink="/driver-orders">
+        <mat-icon>pending</mat-icon>
+    </button>
+    <button mat-fab routerLink="/driver-profile">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-fab (click)="logOut()">
+        <mat-icon>logout</mat-icon>
+    </button>   
+</mat-toolbar>

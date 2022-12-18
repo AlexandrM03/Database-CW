@@ -1,0 +1,43 @@
+<div>
+    <h2>Create new order</h2>
+    <form [formGroup]="orderCreationForm">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Start country</mat-label>
+            <mat-select (selectionChange)="getCities($event, 'start')">
+                <mat-option *ngFor="let country of countriesFrom" [value]="country">
+                    {{ country }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Start city</mat-label>
+            <mat-select (selectionChange)="setCity($event, 'start')">
+                <mat-option *ngFor="let city of citiesFrom" [value]="city">
+                    {{ city }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>End country</mat-label>
+            <mat-select (selectionChange)="getCities($event, 'end')">
+                <mat-option *ngFor="let country of countriesTo" [value]="country">
+                    {{ country }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>End city</mat-label>
+            <mat-select (selectionChange)="setCity($event, 'end')">
+                <mat-option *ngFor="let city of citiesTo" [value]="city">
+                    {{ city }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button color="primary" class="w-50" [disabled]="!(selectedPointFrom && selectedPointTo)"
+                (click)="submit()" mat-button disableRipple>
+            Create
+        </button>
+    </form>
+</div>

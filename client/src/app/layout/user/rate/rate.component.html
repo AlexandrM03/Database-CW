@@ -1,0 +1,26 @@
+<div>
+    <h2>Rate driver</h2>
+    <form [formGroup]="rateForm">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Rating (1-5)</mat-label>
+            <input matInput
+                   formControlName="rating"/>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Message</mat-label>
+            <input matInput
+                   formControlName="message"/>
+        </mat-form-field>
+
+        <div>
+            <button (click)="closeDialog()" class="w-50"
+                    mat-button mat-dialog-close disableRipple>
+                Cancel
+            </button>
+            <button color="primary" class="w-50" [disabled]="rateForm.invalid"
+                    (click)="submit()" mat-button disableRipple>
+                Rate
+            </button>
+        </div>
+    </form>
+</div>

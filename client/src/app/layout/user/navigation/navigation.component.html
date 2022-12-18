@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <span routerLink="/index" style="cursor: pointer; margin-left: 20px;">deliverty</span>
+
+    <span class="spacer"></span>
+
+    <button *ngIf="isLoggedIn" [matMenuTriggerFor]="menu" mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu id="menu-item" #menu="matMenu">
+        <button mat-menu-item routerLink="/profile">
+            <mat-icon>account_circle</mat-icon>
+            <span>Profile</span>
+        </button>
+        <button mat-menu-item routerLink="/user-notifications">
+            <mat-icon>notifications</mat-icon>
+            <span>Notifications</span>
+        </button>
+        <button mat-menu-item (click)="logOut()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>

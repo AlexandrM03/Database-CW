@@ -1,0 +1,57 @@
+<app-admin-navigation></app-admin-navigation>
+<div *ngIf="isOrdersLoaded" class="table-con">
+    <table mat-table [dataSource]="orders" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="start_point">
+            <th mat-header-cell *matHeaderCellDef>Start point</th>
+            <td mat-cell *matCellDef="let order">{{order.startPoint}}</td>
+        </ng-container>
+        <ng-container matColumnDef="end_point">
+            <th mat-header-cell *matHeaderCellDef>End point</th>
+            <td mat-cell *matCellDef="let order">{{order.endPoint}}</td>
+        </ng-container>
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <td mat-cell *matCellDef="let order">{{order.price}}</td>
+        </ng-container>
+        <ng-container matColumnDef="start_date">
+            <th mat-header-cell *matHeaderCellDef>Start date</th>
+            <td mat-cell *matCellDef="let order">{{order.startDate}}</td>
+        </ng-container>
+        <ng-container matColumnDef="end_date">
+            <th mat-header-cell *matHeaderCellDef>End date</th>
+            <td mat-cell *matCellDef="let order">{{order.endDate}}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let order">{{order.status}}</td>
+        </ng-container>
+        <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef>Username</th>
+            <td mat-cell *matCellDef="let order">{{order.username}}</td>
+        </ng-container>
+        <ng-container matColumnDef="driver">
+            <th mat-header-cell *matHeaderCellDef>Driver</th>
+            <td mat-cell *matCellDef="let order">{{order.driverUsername}}</td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let order">
+                <button mat-raised-button
+                        (click)="evaluatePrice($event, order.id)"
+                        [disabled]="order.status !== 'pending'">Evaluate</button>
+                <button mat-raised-button
+                        (click)="acceptOrder($event, order.id)"
+                        [disabled]="order.status !== 'pending'">Accept</button>
+                <button mat-raised-button
+                        (click)="rejectOrder($event, order.id)"
+                        [disabled]="order.status !== 'pending'">Reject</button>
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="['start_point', 'end_point', 'price', 'start_date', 'end_date', 'status', 'username', 'driver', 'action']"></tr>
+        <tr mat-row style="cursor: pointer;"
+            *matRowDef="let row; columns: ['start_point', 'end_point', 'price', 'start_date', 'end_date', 'status', 'username', 'driver', 'action'];"
+            [routerLink]="['/order-info/', row.id]"></tr>
+    </table>
+</div>

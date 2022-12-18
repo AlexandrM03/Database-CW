@@ -1,0 +1,15 @@
+* {
+    font-size: large;
+}
+
+.table-con {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.demo-table {
+    width: 90%;
+}

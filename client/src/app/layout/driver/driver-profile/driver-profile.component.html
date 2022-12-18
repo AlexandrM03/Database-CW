@@ -1,0 +1,38 @@
+<app-driver-navigation></app-driver-navigation>
+<div *ngIf="isDataLoaded" class="driver-profile">
+    <div>
+        <mat-card class="driver-card">
+            <mat-card-header>
+                <mat-card-title>
+                    <h2>{{driver.username}}</h2>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p *ngIf="!(driver.firstName && driver.lastName && driver.telephone); else el">
+                    Please fulfill your info
+                </p>
+                <ng-template #el>
+                    <p>{{driver.firstName + ' ' + driver.lastName}}</p>
+                    <p>{{driver.telephone}}</p>
+                    <p>Rating: {{driver.rating}}*</p>
+                </ng-template>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="editDriver()">Edit</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+    <form [formGroup]="passwordForm" class="change-form">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>password</mat-label>
+            <input matInput formControlName="password" type="password">
+        </mat-form-field>
+        <div>
+            <button (click)="submit()" class="w-50"
+                    mat-button mat-dialog-close disableRipple>
+                Update
+            </button>
+        </div>
+    </form>
+</div>

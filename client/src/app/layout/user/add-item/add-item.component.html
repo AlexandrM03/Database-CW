@@ -1,0 +1,31 @@
+<div>
+    <h2>Add item</h2>
+    <form [formGroup]="addItemForm">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Item name</mat-label>
+            <input matInput
+                   formControlName="name"/>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Item weight</mat-label>
+            <input matInput
+                   formControlName="weight"/>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Item volume</mat-label>
+            <input matInput
+                   formControlName="volume"/>
+        </mat-form-field>
+
+        <div>
+            <button (click)="closeDialog()" class="w-50"
+                    mat-button mat-dialog-close disableRipple>
+                Cancel
+            </button>
+            <button color="primary" class="w-50" [disabled]="addItemForm.invalid"
+                    (click)="submit()" mat-button disableRipple>
+                Add
+            </button>
+        </div>
+    </form>
+</div>

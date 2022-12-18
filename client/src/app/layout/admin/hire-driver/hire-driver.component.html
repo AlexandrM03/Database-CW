@@ -1,0 +1,27 @@
+<div>
+    <h2>Hire driver</h2>
+    <form [formGroup]="hireForm">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput
+                   formControlName="username"/>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput
+                   type="password"
+                   formControlName="password"/>
+        </mat-form-field>
+
+        <div>
+            <button (click)="closeDialog()" class="w-50"
+                    mat-button mat-dialog-close disableRipple>
+                Cancel
+            </button>
+            <button color="primary" class="w-50" [disabled]="hireForm.invalid"
+                    (click)="submit()" mat-button disableRipple>
+                Hire
+            </button>
+        </div>
+    </form>
+</div>
